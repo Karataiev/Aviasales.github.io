@@ -14,16 +14,24 @@ code {
 
 .wrapper {
   padding-top: 5rem;
+  padding-bottom: 5rem;
   margin: 0 auto;
   width: 1200px;
-  background-color: rgb(214, 214, 214);
+  background-color: rgb(194, 218, 228);
+  max-height: 1550px;
 }
 
-.tickets{
-  list-style: none;
+li{
+  list-style: none; 
+}
+
+.tickets {
+  position: relative;
+  top: -400px;
 }
 
 .someTicket {
+  display: flex;
   margin-top: 20px;
   padding: 20px;
   border: none;
@@ -32,7 +40,13 @@ code {
   background-color: white;
   max-width: 50%;
   min-height: 100px;
+  margin-left: 450px;
+  transition: .5s;
+}
 
+.someTicket:hover {
+  background-color: lightyellow;
+  transition: .5s;
 }
 
 .price {
@@ -64,4 +78,173 @@ code {
 .turAir {
   padding-left: 10px;
 }
+
+.time {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  height: 35px;
+  width: 430px;  
+}
+
+.time_1,
+.time_2 {
+  margin: 0;
+  padding: 0;
+  font-size: xx-large;
+}
+
+hr {
+  border: none;
+  color: grey;
+  background-color: grey;
+  height: .1px;
+}
+
+.stops {
+  text-align: center;
+  width: 150px;
+}
+
+.origin,
+.divDate {
+  margin-left: 20px;
+}
+
+.origin {
+  margin-top: 5px;
+}
+
+.span_3 {
+  margin-left: 185px;
+}
+
+.divDate {
+  color: grey;
+  font-size: small;
+}
+
+.divDateSpan {
+  margin-left: 330px;
+}
+
+.currencyStyle {
+  padding: 20px;
+  padding-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px grey;
+  width: 250px;
+  position: relative;
+  top: -28px;
+  left: 90px;
+  z-index: 5;
+}
+
+.btnCur {
+  margin-top: 10px;
+}
+
+.btn_1,
+.btn_2,
+.btn_3 {
+  height: 40px;
+  width: 33.3%;
+  border: rgb(211, 211, 211) solid .1px;
+  cursor: pointer;
+  color: rgb(0, 110, 255);
+  font-size: medium;
+  background-color: white;
+  transition: .5s;
+}
+
+.btn_1:hover {
+  background-color: rgb(235, 235, 253);
+  transition: .5s;
+}
+
+.btn_2:hover {
+  background-color: rgb(235, 235, 253);;
+  transition: .5s;
+}
+
+.btn_3:hover {
+  background-color: rgb(235, 235, 253);
+  transition: .5s;
+}
+
+.btn_1 {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.btn_3 {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.transfer {
+  padding-left: 0;
+  margin-top: 30px;
+}
+
+.checkLi {
+  margin-left: -5px;
+  font-size: smaller;  
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.checkLiLast {
+  margin-left: -5px;
+  font-size: smaller;  
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.one {
+  zoom: 1.5;
+}
+
+.text {
+  position: relative;
+  bottom: 5px;
+}
+
+.checkLi:hover {
+  background-color: rgb(235, 235, 253);
+  transition: .5s;
+}
+
+.checkLi:hover .text_2{
+  color: rgb(0, 110, 255);
+  transition: .5s;
+  
+}
+
+.checkLiLast:hover {
+  background-color: rgb(235, 235, 253);
+  transition: .5s;
+}
+
+.checkLiLast:hover .text_2 {
+  color: rgb(0, 110, 255);
+  transition: .5s;
+}
+
+.text_2 {
+  position: relative;
+  bottom: -7px;
+  font-size: small;
+  font-weight: bold;
+  float: right;
+  color: white;
+  padding-right: 5px;
+}
+
+
+
+
+
+
 
