@@ -3,6 +3,7 @@ import ticketList from './ticketList.json';
 import logo from './Images/image-avia.png'
 
 function Tickets () {
+
     const tick = ticketList.tickets;
 
     function sortByPrice(tick) {
@@ -18,7 +19,7 @@ function Tickets () {
                     
                     <div className="price">
                         <img src={logo} alt="avia" width="100px" className="turAir"/>
-                        <button className="btnTicket"><div>Купить</div> за {item.price}$</button>
+                        <button className="btnTicket"><div>Купить</div> за {item.price}₽</button>
                     </div>
 
                     <div className="divInfo">
@@ -27,7 +28,6 @@ function Tickets () {
                             <span className="stops">{item.stops} Transfer<div><hr/></div></span>
                             <span className="time_2">{item.arrival_time}</span>
                         </div>
-                    
                     
                         <div className="origin">
                             <span className="span_1">{item.origin},</span>

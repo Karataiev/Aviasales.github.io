@@ -1,17 +1,17 @@
 import React from 'react';
+import store from '../Redux/createStore';
+
+store.subscribe(() => console.log(store.getState()))
 
 function Сurrency() {
-
-    
-
     return(
        
             <div className="currencyStyle">
                 <span>ВАЛЮТА</span>
                 <div className="btnCur">
-                    <button className="btn_1">RUB</button>
-                    <button className="btn_2">USD</button>
-                    <button className="btn_3">EUR</button>
+                    <button className="btn_1" onClick={() =>{store.dispatch({type:"RUB"})}}>RUB</button>
+                    <button className="btn_2" onClick={() =>{store.dispatch({type:"USD"})}}>USD</button>
+                    <button className="btn_3" onClick={() =>{store.dispatch({type:"EUR"})}}>EUR</button>
                 </div>
                 
                 <ul className="transfer">
@@ -52,12 +52,7 @@ function Сurrency() {
                     <span className="text_2">ТОЛЬКО</span>
                 </li>
             </ul>
-            </div>
-            
-            
-                
-
-        
+            </div>      
     )
 }
 
