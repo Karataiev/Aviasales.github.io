@@ -1,4 +1,7 @@
+
+
 function currencyReducer (state, action) {
+    
     if (action.type === "USD") {
         return (state / 73)
     } else if (action.type === "EUR") {

@@ -3,17 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import currencyReducer from './Redux/currencyReducer'
-// import { createStore } from "redux";
-// import { Provider } from 'react-redux';
-
-// const store = createStore(currencyReducer, 1)
+import store from './Redux/createStore';
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store = {store}> */}
+    <Provider store = {store}>
       <App />
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

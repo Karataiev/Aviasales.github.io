@@ -1,9 +1,10 @@
-// import ticketList from '../Components/ticketList.json';
-// import Tickets from '../Components/Tickets';
+import ticketList from '../Components/ticketList.json';
+import Tickets from '../Components/Tickets';
 
 
-// const initialState = {
+const initialState = {
+    state: {}
     
-// }
+}
 
-// export default initialState;
+export default initialState;
