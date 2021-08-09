@@ -1,8 +1,8 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import currencyReducer from './currencyReducer'
-import Tickets from '../Components/Tickets';
-import initialState from './initialState';
 
-const store = createStore(currencyReducer, 1)
-
-export default store;
+export default configureStore({
+    reducer: {
+        root: currencyReducer
+    }
+  });

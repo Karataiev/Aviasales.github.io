@@ -1,15 +1,31 @@
+import actionNames from "./actionNames";
+import ticketList from '../Components/ticketList.json';
 
+const getDefaultTickets = () => {
+    const { tickets } = ticketList;
+    return tickets.sort((a, b) => a.price > b.price ? 1 : -1);
+}
 
-function currencyReducer (state, action) {
-    
-    if (action.type === "USD") {
-        return (state / 73)
-    } else if (action.type === "EUR") {
-        return (state / 86)
-    } else if (action.type === "RUB") {
-        return state
+const defaultState = {
+    currency: "USD",
+    tickets: [...getDefaultTickets()],
+}
+
+function currencyReducer (state = defaultState, action) {
+    console.log('REDUCER', state, action);
+    switch(action.type) {
+        case actionNames.CURRENCY_CHANGE:
+            const { currencyName } = action;
+            let tickets = [...getDefaultTickets()];
+            if (currencyName === "USD") {
+                tickets = tickets.map((ticket) => ({...ticket, price: Math.trunc(ticket.price / 76)}))
+            } else if (currencyName === "EUR") {
+                tickets = tickets.map((ticket) => ({...ticket, price: Math.trunc(ticket.price / 86)}))
+            }
+            return {...state, currency: currencyName, tickets }
+        default:
+            return {...state};  
     }
-    return state
 }
 
 export default currencyReducer;

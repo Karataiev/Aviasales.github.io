@@ -1,17 +1,22 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { currencyChangeAction } from '../Redux/actions';
 import store from '../Redux/createStore';
 
 store.subscribe(() => console.log(store.getState()))
 
 function Сurrency() {
+
+
+    // const currency = useSelector(state => state.root.currency);
+    const dispatch = useDispatch();
     return(
-       
             <div className="currencyStyle">
                 <span>ВАЛЮТА</span>
                 <div className="btnCur">
-                    <button className="btn_1" onClick={() =>{store.dispatch({type:"RUB"})}}>RUB</button>
-                    <button className="btn_2" onClick={() =>{store.dispatch({type:"USD"})}}>USD</button>
-                    <button className="btn_3" onClick={() =>{store.dispatch({type:"EUR"})}}>EUR</button>
+                    <button className="btn_1" onClick={() =>{dispatch(currencyChangeAction('RUB'))}}>RUB</button>
+                    <button className="btn_2" onClick={() =>{dispatch(currencyChangeAction('USD'))}}>USD</button>
+                    <button className="btn_3" onClick={() =>{dispatch(currencyChangeAction('EUR'))}}>EUR</button>
                 </div>
                 
                 <ul className="transfer">
@@ -23,6 +28,7 @@ function Сurrency() {
                     <span className="text">Все</span>
                     <span className="text_2">ТОЛЬКО</span>
                 </li>
+
                 <li className="checkLi">
                     <span>
                         <input type="checkbox" className="one"/>
@@ -30,6 +36,7 @@ function Сurrency() {
                     <span className="text">Без пересадок</span>
                     <span className="text_2">ТОЛЬКО</span>
                 </li>
+
                 <li className="checkLi">
                     <span>
                         <input type="checkbox" className="one"/>
@@ -37,6 +44,7 @@ function Сurrency() {
                     <span className="text">1 пересадка</span>
                     <span className="text_2">ТОЛЬКО</span>
                 </li>
+
                 <li className="checkLi">
                     <span>
                         <input type="checkbox" className="one"/>
@@ -44,6 +52,7 @@ function Сurrency() {
                     <span className="text"> 2 пересадки</span>
                     <span className="text_2">ТОЛЬКО</span>
                 </li>
+
                 <li className="checkLiLast">
                     <span>
                         <input type="checkbox" className="one"/>
