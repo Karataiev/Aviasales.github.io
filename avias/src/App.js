@@ -6,17 +6,17 @@ import ModalWindowSuccess from './Components/ModalWindowSuccess';
 import logo from './Components/Images/image-avia.png'
 import { useSelector } from 'react-redux';
 
-function App() {
+function App({changeFilter}) {
 
 const tickets = useSelector(state => state.root.tickets);
 
 const [modalActive, setModalActive] = useState(false)
-const [modalActiveSuccess, setModalActiveSuccess] = useState(true)
+const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
 
   return (
   <>
     <div className="wrapper">
-      <Сurrency/>
+      <Сurrency changeFilter={changeFilter}/>
       
       <ul className="tickets">
             {tickets.map(item => (

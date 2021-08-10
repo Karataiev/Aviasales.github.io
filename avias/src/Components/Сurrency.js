@@ -1,67 +1,34 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { currencyChangeAction } from '../Redux/actions';
+import { currencyChangeAction, filterActions } from '../Redux/actions';
 import store from '../Redux/createStore';
+import FilterItem from './FilterItem';
 
 store.subscribe(() => console.log(store.getState()))
 
-function Сurrency() {
+function Сurrency({ state, toggleCheckbox, toggleCheckAll }) {
 
-
-    // const currency = useSelector(state => state.root.currency);
+    const currency = useSelector(state => state.root.currency);
+    const filters = useSelector(state => state.root.filters);
     const dispatch = useDispatch();
-    return(
-            <div className="currencyStyle">
-                <span>ВАЛЮТА</span>
-                <div className="btnCur">
-                    <button className="btn_1" onClick={() =>{dispatch(currencyChangeAction('RUB'))}}>RUB</button>
-                    <button className="btn_2" onClick={() =>{dispatch(currencyChangeAction('USD'))}}>USD</button>
-                    <button className="btn_3" onClick={() =>{dispatch(currencyChangeAction('EUR'))}}>EUR</button>
-                </div>
-                
-                <ul className="transfer">
+    return (
+        <div className="currencyStyle">
+            <span>ВАЛЮТА</span>
+            <div className="btnCur">
+                <button className="btn_1" onClick={() => { dispatch(currencyChangeAction('RUB')) }}>RUB</button>
+                <button className="btn_2" onClick={() => { dispatch(currencyChangeAction('USD')) }}>USD</button>
+                <button className="btn_3" onClick={() => { dispatch(currencyChangeAction('EUR')) }}>EUR</button>
+            </div>
+            <ul className="transfer">
                 <span >КОЛИЧЕСТВО ПЕРЕСАДОК</span>
-                <li className="checkLi">
-                    <span>
-                        <input type="checkbox" className="one"/>
-                    </span>
-                    <span className="text">Все</span>
-                    <span className="text_2">ТОЛЬКО</span>
-                </li>
+                {filters.map((filter) => (
 
-                <li className="checkLi">
-                    <span>
-                        <input type="checkbox" className="one"/>
-                    </span>
-                    <span className="text">Без пересадок</span>
-                    <span className="text_2">ТОЛЬКО</span>
-                </li>
+                    <FilterItem {...filter} onClick={(id) => dispatch(filterActions(id))} />
 
-                <li className="checkLi">
-                    <span>
-                        <input type="checkbox" className="one"/>
-                    </span>
-                    <span className="text">1 пересадка</span>
-                    <span className="text_2">ТОЛЬКО</span>
-                </li>
-
-                <li className="checkLi">
-                    <span>
-                        <input type="checkbox" className="one"/>
-                    </span>
-                    <span className="text"> 2 пересадки</span>
-                    <span className="text_2">ТОЛЬКО</span>
-                </li>
-
-                <li className="checkLiLast">
-                    <span>
-                        <input type="checkbox" className="one"/>
-                    </span>
-                    <span className="text">3 пересадки</span>
-                    <span className="text_2">ТОЛЬКО</span>
-                </li>
+                ))}
             </ul>
-            </div>      
+        </div>
+
     )
 }
 
