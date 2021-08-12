@@ -1,4 +1,6 @@
 export default {
     CURRENCY_CHANGE: 'CURRENCY_CHANGE',
     FILTERS: 'FILTERS',
+    CHECKED: 'CHECKED',
+    CHECK_ALL: 'CHECK_ALL',
 }

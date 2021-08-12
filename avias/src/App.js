@@ -11,13 +11,13 @@ function App({changeFilter}) {
 const tickets = useSelector(state => state.root.tickets);
 
 const [modalActive, setModalActive] = useState(false)
-const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
+const [modalActiveSuccess, setModalActiveSuccess] = useState(true)
 
   return (
   <>
     <div className="wrapper">
       <Сurrency changeFilter={changeFilter}/>
-      
+
       <ul className="tickets">
             {tickets.map(item => (
                 <li key={item.price} className="someTicket"> 
@@ -46,7 +46,6 @@ const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
                 </li>
             ))}
         </ul>
-
         <Modal active={modalActive} setActive={setModalActive}/>
         <ModalWindowSuccess activeSuccess={modalActiveSuccess} setActiveSuccess={setModalActiveSuccess}/>
     </div> 
@@ -55,3 +54,4 @@ const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
 }
 
 export default App;
+

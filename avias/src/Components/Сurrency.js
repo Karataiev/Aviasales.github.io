@@ -1,18 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { currencyChangeAction, filterActions } from '../Redux/actions';
-import store from '../Redux/createStore';
 import FilterItem from './FilterItem';
+import FilterAll from './FilterAll'
 
-store.subscribe(() => console.log(store.getState()))
+function Сurrency({id}) {
 
-function Сurrency({ state, toggleCheckbox, toggleCheckAll }) {
-
-    const currency = useSelector(state => state.root.currency);
+    // const currency = useSelector(state => state.root.currency);
     const filters = useSelector(state => state.root.filters);
     const dispatch = useDispatch();
     return (
-        <div className="currencyStyle">
+        <div className="currencyStyle" key={id}>
             <span>ВАЛЮТА</span>
             <div className="btnCur">
                 <button className="btn_1" onClick={() => { dispatch(currencyChangeAction('RUB')) }}>RUB</button>
@@ -21,10 +19,9 @@ function Сurrency({ state, toggleCheckbox, toggleCheckAll }) {
             </div>
             <ul className="transfer">
                 <span >КОЛИЧЕСТВО ПЕРЕСАДОК</span>
+                <FilterAll/>
                 {filters.map((filter) => (
-
-                    <FilterItem {...filter} onClick={(id) => dispatch(filterActions(id))} />
-
+                    <FilterItem key={id} {...filter} onClick={(id) => dispatch(filterActions(id))} />
                 ))}
             </ul>
         </div>

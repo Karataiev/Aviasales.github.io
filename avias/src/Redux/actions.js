@@ -9,18 +9,14 @@ export const currencyChangeAction = (currencyName) => ({
 export const filterActions = (filterName) => ({
     type: actionNames.FILTERS,
     filterName
-})
+});
 
-export const toggleCheckbox = (id) => ({
-    type: "CHECKED",
-    payload: {
-      id,
-    },
-  });
+export const toggleCheckAll = (toggleCheckAllName) => ({
+    type: actionNames.CHECK_ALL,
+    toggleCheckAllName
+});
 
-export const toggleCheckAll = (checked) => ({
-    type: "CHECK_ALL",
-    payload: {
-      checked,
-    },
-  });
+export const checkedTickets = (ticketsName) => ({
+    type: 'CHECKED_TICKETS',
+    ticketsName
+});

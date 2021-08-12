@@ -103,6 +103,7 @@ const blurHandler = (e) => {
         case 'passportnumber':
             setPassportnumberDirty(true)
             break
+            default:
     }
 }
 

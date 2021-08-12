@@ -1,14 +1,17 @@
 import React from 'react';
 
-const FilterItem = ({checked, name, onClick, id, label}) => {
+const FilterItem = ({checked, onClick, id, label}) => {
+    
     return (
-        <li className="checkLi">
+        <>
+        <div className="checkLi" key={id}>
             <span>
-                <input name="checkAll" type="checkbox" checked={checked} onClick={() => onClick(id)} />
+                <input className="one" type="checkbox" checked={checked} onChange={() => onClick(id)} />
             </span>
             <span className="text">{label}</span>
             <span className="text_2">ТОЛЬКО</span>
-        </li>
+        </div>
+        </>
     )
 }
 
