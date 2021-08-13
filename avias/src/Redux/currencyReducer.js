@@ -10,17 +10,13 @@ let defaultState = {
     currency: "USD",
     tickets: [...getDefaultTickets()],
     filters: [
-        { id: "1", name: "name1", label: 'Без пересадок', checked: false },
-        { id: "2", name: "name2",label: '1 пересадка',  checked: false },
-        { id: "3", name: "name3",label: '2 пересадки',  checked: false },
-        { id: "4", name: "name4",label: '3 пересадки',  checked: false }
+        { id: 1, label: 'Без пересадок', checked: false },
+        { id: 2, label: '1 пересадка',  checked: false },
+        { id: 3, label: '2 пересадки',  checked: false },
+        { id: 4, label: '3 пересадки',  checked: false }
     ],
-    filterTickets: [
-        {label: "Все", id:1, isChecked: false},
-        {label: "Без пересадок", id:2, isChecked: false},
-        {label: "1 пересадка", id:3, isChecked: false},
-        {label: "2 пересадки", id:4, isChecked: false},
-        {label: "3 пересадки", id:5, isChecked: false},
+    filterAll: [
+        { id: 5, checked: false }
     ]
 }
 
@@ -48,36 +44,20 @@ function currencyReducer (state = defaultState, action) {
         case actionNames.CHECK_ALL:
             const { toggleCheckAllName } = action;
             let filtersAll = state.filters;
-            if (toggleCheckAllName === 'All') {
-                filtersAll = filtersAll.map((filter) => ({...filter, checked: !filter.checked}))
+            let filterHead = state.filterAll
+            if (toggleCheckAllName === filterHead.id) {
+               filtersAll = filtersAll.map((filter) => ({...filter, checked: !filter.checked}))
             }
             return {...state, filters: filtersAll, toggle: toggleCheckAllName }
-
-
-        case 'CHECKED_TICKETS':
-            if (action.id === 1) {
-                if (state.filterTickets[0].isChecked === false) {
-                    return state.filterTickets.map(el => ({...el, isChecked: true}))
-                } else {
-                    return state.filterTickets.map(el => ({...el, isChecked: false}))
-                }
+            
+        case actionNames.CHECKED_TICKETS:
+            const { checkedTickets } = action;
+            let ticketsFilter = [...getDefaultTickets()];
+            let filtersAll_1 = state.filters;
+            if (checkedTickets === filtersAll_1[0]) {
+                ticketsFilter = ticketsFilter.map((tick) => ({...tick.filter(ticketsFilter.stops === 0)}))
             }
-            if (state[0].isChecked === false) {
-                const index = state.filterTickets.findIndex((el) => el.id === action.id)
-                const oldItem = state.filterTickets[index]
-                const newItem = {...oldItem, isChecked: !oldItem.isChecked }
-                return [...state.filterTickets.slice(0, index), newItem, ...state.filterTickets.slice(index + 1)]
-            } else {
-                const index = state.filterTickets.findIndex((el) => el.id === action.id)
-                const oldItem = state.filterTickets[index]
-                const allOldItem = state.filterTickets[0]
-                const allNewItem = {...allOldItem, isChecked: false}
-                const newItem = {...oldItem, isChecked: !oldItem.isChecked }
-                return [allNewItem, ...state.filterTickets.slice(1, index), newItem, ...state.filterTickets.slice(index + 1)]
-            }
-            // const ticketsFilter = state.tickets.filter((ticket) => {
-            //     return newFilters.some(filter => filter === ticket.stops)
-            // });
+            return {...state, tickets: ticketsFilter }
 
         default:
             return {...state};  
@@ -85,3 +65,24 @@ function currencyReducer (state = defaultState, action) {
 }
 
 export default currencyReducer;
+
+    // if (filterHead.checked === false) {
+    //                 return filterHead.map(el => ({...el, checked: true}))
+    //             } else {
+    //                 return filterHead.map(el => ({...el, checked: false}))
+    //             }
+    //           }
+    //             if (filterHead.checked === false) {
+    //                 const index = filtersAll.findIndex((el) => el.id === action.id)
+    //                 const oldItem = filtersAll[index]
+    //                 const newItem = {...oldItem, checked: !oldItem.checked }
+    //                 return [...filtersAll.slice(0, index), newItem, ...filtersAll.slice(index + 1)]
+    //             } else {
+    //                 const index = filtersAll.findIndex((el) => el.id === action.id)
+    //                 const oldItem = filtersAll[index]
+    //                 const allOldItem = filterHead[0]
+    //                 const allNewItem = {...allOldItem, checked: false}
+    //                 const newItem = {...oldItem, checked: !oldItem.checked }
+    //                 return [allNewItem, ...filtersAll.slice(1, index), newItem, ...filtersAll.slice(index + 1)]
+    //             }
+            

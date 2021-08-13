@@ -3,4 +3,5 @@ export default {
     FILTERS: 'FILTERS',
     CHECKED: 'CHECKED',
     CHECK_ALL: 'CHECK_ALL',
+    CHECKED_TICKETS: 'CHECKED_TICKETS'
 }
