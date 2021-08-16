@@ -235,16 +235,6 @@ hr {
   
 }
 
-/* .checkLiLast:hover {
-  background-color: rgb(235, 235, 253);
-  transition: .5s;
-}
-
-.checkLiLast:hover .text_2 {
-  color: rgb(0, 110, 255);
-  transition: .5s;
-} */
-
 .text_2 {
   position: relative;
   bottom: -7px;
@@ -271,8 +261,8 @@ text-align: center;
 }
 
 .btnOrder {
-  position: relative;
-  left: 250px;
+  display: flex;
+  margin: 0 auto;
   background-color: rgb(194, 218, 228);
   border: none;
   border-radius: 5px;

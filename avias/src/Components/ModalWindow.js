@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useState } from 'react'
 
-function Modal ({active, setActive, setActiveSuccess}) {
+function Modal ({active, setActive, setModalActiveSuccess}) {
 
 const [email, setEmail] = useState('');
 const [phone, setPhone] = useState('');
@@ -129,7 +129,7 @@ const blurHandler = (e) => {
                     {(passportnumberDirty && passportnumberError) && <div style={{color: 'red'}}>{passportnumberError}</div>}
                     <input onChange={pas => passportnumberHandled(pas)} value={passportnumber} onBlur={e => blurHandler(e)} name='passportnumber' type='text' placeholder='passportnumber' className='inputValid'/>
 
-                    <button disabled={!formValid} type='submit' className='btnOrder' onClick={() => setActiveSuccess.setModalActiveSuccess(true)}>Order</button>
+                    <button disabled={!formValid} type='submit' className='btnOrder' onClick={() => setModalActiveSuccess(true)}>Order</button>
                     
                 </form>
                 </div>

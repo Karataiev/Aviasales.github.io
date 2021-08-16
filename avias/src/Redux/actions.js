@@ -5,7 +5,6 @@ export const currencyChangeAction = (currencyName) => ({
     currencyName
 });
 
-
 export const filterActions = (filterName) => ({
     type: actionNames.FILTERS,
     filterName
@@ -19,4 +18,9 @@ export const toggleCheckAll = (toggleCheckAllName) => ({
 export const checkedTickets = (ticketsName) => ({
     type: actionNames.CHECKED_TICKETS,
     ticketsName
+});
+
+export const someTickets = (someTicketsName) => ({
+    type: actionNames.MY_TICKETS,
+    someTicketsName
 });

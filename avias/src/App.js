@@ -9,12 +9,9 @@ import { useSelector } from 'react-redux';
 function App({changeFilter}) {
 
 const tickets = useSelector(state => state.root.tickets);
-// console.log(useSelector(state => state.root));
-
-// console.log(tickets);
 
 const [modalActive, setModalActive] = useState(false)
-const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
+const [modalActiveSuccess, setModalActiveSuccess] = useState(true)
 
   return (
   <>
@@ -26,7 +23,7 @@ const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
                 <li key={item.price} className="someTicket"> 
                     <div className="price">
                         <img src={logo} alt="avia" width="100px" className="turAir"/>
-                        <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купить</div> за {item.price}</button>
+                        <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купить</div>за {item.price}</button>
                     </div>
                     <div className="divInfo">
                         <div className="time">
