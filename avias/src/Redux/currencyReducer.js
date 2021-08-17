@@ -2,7 +2,7 @@ import actionNames from "./actionNames";
 import ticketList from '../Components/ticketList.json';
 
 const getDefaultTickets = () => {
-    const { tickets } = ticketList;
+    let { tickets } = ticketList;
     return tickets.sort((a, b) => a.price > b.price ? 1 : -1);
 }
 
@@ -17,15 +17,25 @@ const defaultState = {
     ],
 }
 
+// $ € ₽
+
 function currencyReducer (state = defaultState, action) {
     switch(action.type) {
         case actionNames.CURRENCY_CHANGE:
+            const icon_1 = ' ₽';
+            const icon_2 = ' €';
+            const icon_3 = ' $';
             const { currencyName } = action;
             let tickets = [...getDefaultTickets()];
+        
             if (currencyName === "USD") {
-                tickets = tickets.map((ticket) => ({...ticket, price: Math.trunc(ticket.price / 76)}))
-            } else if (currencyName === "EUR") {
-                tickets = tickets.map((ticket) => ({...ticket, price: Math.trunc(ticket.price / 86)}))
+                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price / 76)) + icon_3}))
+            }
+            if (currencyName === "EUR") {
+                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price / 86)) + icon_2}))
+            }
+            if (currencyName === "RUB") {
+                tickets = tickets.map((ticket) => ({...ticket, price: String(ticket.price) + icon_1}))
             }
             return {...state, currency: currencyName, tickets }
         

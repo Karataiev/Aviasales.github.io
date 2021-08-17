@@ -11,8 +11,9 @@ function App({changeFilter}) {
 const tickets = useSelector(state => state.root.tickets);
 
 const [modalActive, setModalActive] = useState(false)
-const [modalActiveSuccess, setModalActiveSuccess] = useState(true)
+const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
 
+// $ € ₽
   return (
   <>
     <div className="wrapper">
