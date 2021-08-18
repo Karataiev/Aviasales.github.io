@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Сurrency from './Components/Сurrency';
 import Modal from './Components/ModalWindow';

@@ -1,8 +1,11 @@
 import actionNames from "./actionNames";
 
-export const currencyChangeAction = (currencyName) => ({
+export const currencyChangeAction = (currencyName, result) => ({
     type: actionNames.CURRENCY_CHANGE,
-    currencyName
+    currencyName,
+    payload: {
+        result
+    }
 });
 
 export const filterActions = (filterName) => ({

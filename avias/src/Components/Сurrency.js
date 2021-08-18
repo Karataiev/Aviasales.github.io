@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { currencyChangeAction, filterActions } from '../Redux/actions';
 import FilterItem from './FilterItem';
 import FilterAll from './FilterAll'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 function Сurrency({id}) {
 
@@ -20,8 +20,25 @@ function Сurrency({id}) {
 
     const filters = useSelector(state => state.root.filters);
     const dispatch = useDispatch();
+
+
+    const [error, setError] = useState(null);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch("https://www.cbr-xml-daily.ru/latest.js")
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                setItems(result);
+            },
+            (error) => {
+                setError(error);
+            }
+        )
+    }, [])
     return (
-        <div className="currencyStyle" key={filters.id}>
+        <div className="currencyStyle">
             <span>ВАЛЮТА</span>
             <div className="btnCur">
                 <button className="btn_1" 

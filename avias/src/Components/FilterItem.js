@@ -6,7 +6,6 @@ const FilterItem = ({checked, onClick, id, label}) => {
     const dispatch = useDispatch();
 
     return (
-        <>
         <label>
         <div className="checkLi" key={id}>
             <span>
@@ -16,7 +15,7 @@ const FilterItem = ({checked, onClick, id, label}) => {
             <span className="text_2">ТОЛЬКО</span>
         </div>
         </label>
-        </>
+       
     )
 }
 

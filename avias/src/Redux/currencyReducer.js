@@ -15,6 +15,7 @@ const defaultState = {
         { id: 2, label: '2 пересадки',  checked: true },
         { id: 3, label: '3 пересадки',  checked: true }
     ],
+    
 }
 
 function currencyReducer (state = defaultState, action) {
