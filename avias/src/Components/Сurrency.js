@@ -21,7 +21,7 @@ function Сurrency({id}) {
     const filters = useSelector(state => state.root.filters);
     const dispatch = useDispatch();
     return (
-        <div className="currencyStyle" key={id}>
+        <div className="currencyStyle" key={filters.id}>
             <span>ВАЛЮТА</span>
             <div className="btnCur">
                 <button className="btn_1" 

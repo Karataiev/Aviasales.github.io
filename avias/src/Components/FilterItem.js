@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { checkedTickets, someTickets } from '../Redux/actions';
+import { useDispatch } from 'react-redux';
+import { checkedTickets } from '../Redux/actions';
 
 const FilterItem = ({checked, onClick, id, label}) => {
     const dispatch = useDispatch();

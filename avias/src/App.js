@@ -11,9 +11,8 @@ function App({changeFilter}) {
 const tickets = useSelector(state => state.root.tickets);
 
 const [modalActive, setModalActive] = useState(false)
-const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
+const [modalActiveSuccess, setModalActiveSuccess] = useState(true)
 
-// $ € ₽
   return (
   <>
     <div className="wrapper">
@@ -40,7 +39,7 @@ const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
                             <span className="span_4">{item.destination}</span>
                         </div>
                         <div className="divDate">
-                            <span>{item.departure_date}</span>
+                            <span className="divDateSpan_0">{item.departure_date}</span>
                             <span className="divDateSpan">{item.arrival_date}</span>
                         </div>
                     </div>                                     

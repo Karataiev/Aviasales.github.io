@@ -18,7 +18,7 @@ code {
   margin: 0 auto;
   max-width: 1200px;
   background-color: rgb(194, 218, 228);
-  min-height: 1550px;
+  min-height: 100%;
 }
 
 li{
@@ -39,8 +39,8 @@ li{
   border-radius: 5px;
   box-shadow: 2px 2px 2px grey;
   background-color: white;
-  max-width: 50%;
-  min-height: 100px;
+  width: 50%;
+  height: 100px;
   margin-left: 450px;
   transition: .5s;
 }
@@ -69,8 +69,8 @@ li{
   margin-right: 10px;
   cursor: pointer;
   transition: .5s;
-  min-width: 120px;
-  min-height: 50px;
+  width: 120px;
+  height: 50px;
 }
 
 .btnTicket:hover {
@@ -283,7 +283,7 @@ text-align: center;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -360,51 +360,51 @@ text-align: center;
 
   .someTicket {
     display: block;
-    flex-direction: column-reverse;
-    /* position: relative; */
-    margin: 10px  auto;
+    margin: 10px auto;
     padding: 10px;
     width: 250px;
-    height: 270px;
+    height: 210px;
     
   }
 
   .price {
     width: 100%;
-    height: 80px; 
+    height: 60px; 
     order: 1;
-    border: none;
-  }
-
-  .divInfo {
-    padding-right: 0;
-    
+    border-right: none;
+    border-bottom: solid 1px rgb(201, 201, 201);
   }
 
   .btnTicket {
     float: left;
-    position: relative;
     top: 200px;
     left: 60px;
-    
     margin: 0;
+    width: 40%;
+    height: 80%;
+    padding: 0;
   }
 
   .turAir {
-    /* float: right; */
-    position: relative;
-    right: 50px;
-    width: 110px;
+    float: right;
+    width: 40%;
     padding-top: 10px;
     padding-right: 10px;
   }
 
+  .divInfo {
+    padding-right: 0;
+    margin: 10px auto;
+    
+  }
+
   .time {
-    margin: 0;
+    margin-left: 10px;
     padding: 0;
     padding-right: 100px;
     font-size: small;
     justify-content: start;
+    width: 100%;
   }
   
   .time_1,
@@ -412,20 +412,58 @@ text-align: center;
     font-size: medium;
   }
 
-  .origin, 
-  .divDate {
+  .origin {
+    padding-left: 10px;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
   }
 
+  .divDate {
+    float: right;
+    width: 20%;
+    padding-right: 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
   .span_3 {
     margin: 0;
+    margin-top: 20px;
   }
 
   .divDateSpan {
     margin: 0;
+    position: relative;
+    bottom: 95px;
   }
 
+  .divDateSpan_0 {
+    position: relative;
+    bottom: 25px;
+  }
 
+  .modal {
+    width: 100%;
+    height: 100%;
+    padding-right: 100px;
+    text-align: center;
+    left: -35px;
+  }
+
+  .inputValid {
+    width: 200px;
+  }
+
+  .modal__content {
+    width: 250px;
+    margin: 0;
+  }
+
+  .modalSuccessContent {
+    width: 100%;
+  }
 }
 
 

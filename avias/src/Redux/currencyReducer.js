@@ -17,8 +17,6 @@ const defaultState = {
     ],
 }
 
-// $ € ₽
-
 function currencyReducer (state = defaultState, action) {
     switch(action.type) {
         case actionNames.CURRENCY_CHANGE:
