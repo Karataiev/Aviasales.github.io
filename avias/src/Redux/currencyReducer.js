@@ -7,7 +7,7 @@ const getDefaultTickets = () => {
 }
 
 const defaultState = {
-    currency: "USD",
+    currency: "RUB",
     tickets: [...getDefaultTickets()],
     filters: [
         { id: 0, label: 'Без пересадок', checked: true },
@@ -15,7 +15,10 @@ const defaultState = {
         { id: 2, label: '2 пересадки',  checked: true },
         { id: 3, label: '3 пересадки',  checked: true }
     ],
-    
+    exchangeRates: {
+        USD: 0.013612,
+        EUR: 0.011612
+    },
 }
 
 function currencyReducer (state = defaultState, action) {
@@ -28,10 +31,10 @@ function currencyReducer (state = defaultState, action) {
             let tickets = [...getDefaultTickets()];
         
             if (currencyName === "USD") {
-                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price / 76)) + icon_3}))
+                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price * state.exchangeRates.USD)) + icon_3}))
             }
             if (currencyName === "EUR") {
-                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price / 86)) + icon_2}))
+                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price * state.exchangeRates.EUR)) + icon_2}))
             }
             if (currencyName === "RUB") {
                 tickets = tickets.map((ticket) => ({...ticket, price: String(ticket.price) + icon_1}))
@@ -46,13 +49,18 @@ function currencyReducer (state = defaultState, action) {
             })
             const newTickets = [...getDefaultTickets()].filter(ticket => newFilters.find(filter => filter.id === ticket.stops).checked)
                 return {...state, filters: newFilters, tickets: newTickets }
-
+       
+        case actionNames.EXCHANGE_RATES: 
+            const { exchangeRates } = action;
+            return {...state, exchangeRates}
+       
         case actionNames.CHECK_ALL:
             const { toggleCheckAllName } = action;
             let allChecked = state.filters;
             if (toggleCheckAllName === 'All') {
                allChecked = allChecked.map((filter) => ({...filter, checked: !allChecked.checked}))
             }
+           
             return {...state, filters: allChecked, tickets: [...defaultState.tickets]}
         default:
             return {...state};  

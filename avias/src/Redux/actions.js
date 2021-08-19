@@ -3,9 +3,8 @@ import actionNames from "./actionNames";
 export const currencyChangeAction = (currencyName, result) => ({
     type: actionNames.CURRENCY_CHANGE,
     currencyName,
-    payload: {
-        result
-    }
+    payload: result
+    
 });
 
 export const filterActions = (filterName) => ({
@@ -26,4 +25,9 @@ export const checkedTickets = (ticketsName) => ({
 export const someTickets = (someTicketsName) => ({
     type: actionNames.MY_TICKETS,
     someTicketsName
+});
+
+export const getExchangeRates = (exchangeRates) => ({
+    type: actionNames.EXCHANGE_RATES,
+    exchangeRates
 });
