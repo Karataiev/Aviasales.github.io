@@ -1,10 +1,10 @@
 import React from 'react';
  
-function ModalWindowSuccess({activeSuccess, setActiveSuccess}) {
+function ModalWindowSuccess({setActiveSuccess}) {
 
     return (
-        <div className={activeSuccess ? 'modalSuccess activeSuccess' : 'modalSuccess'} onClick={() => setActiveSuccess(false)}>
-            <div className='modalSuccessContent' onClick={e => e.stopPropagation}>
+        <div className='modalSuccess activeSuccess' onClick={() => setActiveSuccess(false)}>
+            <div className='modal__successContent' onClick={e => e.stopPropagation}>
                 <h1>SUCCESS</h1>
             </div>
         </div>
