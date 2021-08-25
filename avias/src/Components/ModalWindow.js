@@ -45,9 +45,6 @@ const phoneHandled = (p) => {
     setPhone(p.target.value)
     if (p.target.value.length < 10 || p.target.value.length > 10 || /^[0-9]+$/.test(p)){
         setPhoneError('Данные некоректны')
-        if(!p.target.value){
-            setPhoneError ('Поле должно быть заполненым')
-        }
     } else {
         setPhoneError('')
     }
@@ -118,20 +115,20 @@ const blurHandler = (e) => {
                 >
                     <h1 className='order'>Order window</h1>
                     
-                    {(emailDirty && emailError) && <div style={{color: 'red'}}>{emailError}</div>}
                     <input onChange={e => emailHandled(e)} value={email} onBlur={e => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className='inputValid'/>
+                    {(emailDirty && emailError) && <div className="divError" style={{color: 'red'}}>{emailError}</div>}
 
-                    {(phoneDirty && phoneError) && <div style={{color: 'red'}}>{phoneError}</div>}
                     <input onChange={p => phoneHandled(p)} value={phone} onBlur={e => blurHandler(e)} name='phone' type='text' placeholder='Enter your phone' className='inputValid'/>
+                    {(phoneDirty && phoneError) && <div className="divError" style={{color: 'red'}}>{phoneError}</div>}
 
-                    {(firstnameDirty && firstnameError) && <div style={{color: 'red'}}>{firstnameError}</div>}
                     <input onChange={f => firstnameHandled(f)} value={firstname} onBlur={e => blurHandler(e)} name='firstname' type='text' placeholder='Enter your firstname' className='inputValid'/>
+                    {(firstnameDirty && firstnameError) && <div className="divError" style={{color: 'red'}}>{firstnameError}</div>}
 
-                    {(secondnameDirty && secondnameError) && <div style={{color: 'red'}}>{secondnameError}</div>}
                     <input onChange={s => secondnameHandled(s)} value={secondname} onBlur={e => blurHandler(e)} name='secondname' type='text' placeholder='Enter your secondname' className='inputValid'/>
+                    {(secondnameDirty && secondnameError) && <div className="divError" style={{color: 'red'}}>{secondnameError}</div>}
 
-                    {(passportnumberDirty && passportnumberError) && <div style={{color: 'red'}}>{passportnumberError}</div>}
                     <input onChange={pas => passportnumberHandled(pas)} value={passportnumber} onBlur={e => blurHandler(e)} name='passportnumber' type='text' placeholder='passportnumber' className='inputValid'/>
+                    {(passportnumberDirty && passportnumberError) && <div className="divError" style={{color: 'red'}}>{passportnumberError}</div>}
 
                     <button disabled={!formValid} type='submit' className='btnOrder' onClick={() => setActiveSuccess(true)}>Order</button>
                     

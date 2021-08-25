@@ -242,7 +242,7 @@ hr {
   margin: 0 auto;
   display: block;
   width: 300px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -256,6 +256,7 @@ text-align: center;
 .btnOrder {
   display: flex;
   margin: 0 auto;
+  margin-top: 20px;
   background-color: rgb(194, 218, 228);
   border: none;
   border-radius: 5px;
@@ -278,6 +279,11 @@ text-align: center;
   opacity: 0;
   pointer-events: none;
   transition: .5s;
+}
+
+.divError {
+  margin: 0 auto;
+  width: 320px;  
 }
 
 .modal.active {

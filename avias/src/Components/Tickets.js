@@ -7,15 +7,16 @@ import ModalWindowSuccess from './ModalWindowSuccess';
 function Ticket () {
     const tickets = useSelector(state => state.root.tickets);
 
+    const currency = useSelector(state => state.root.currency);
+
     const [modalActive, setModalActive] = useState(false)
     const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
 
-    const ticketButtons = [
-        {className: 'btnTicket', symbol: ' ₽'},
-        {className: 'btnTicket', symbol: ' $'},
-        {className: 'btnTicket', symbol: ' €'},
-    ]
-
+    const currencySymbols = {
+        RUB: ' ₽',
+        USD: ' $',
+        EUR: ' €'
+    }
 
     return (
         <>
@@ -24,7 +25,7 @@ function Ticket () {
             <li key={item.price} className="someTicket"> 
                 <div className="price">
                     <img src={logo} alt="avia" width="100px" className="turAir"/>
-                    <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купить</div>за {item.price}</button>
+                        <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купить</div>за {item.price} {currencySymbols[currency]}</button>
                 </div>
                 <div className="divInfo">
                     <div className="time">
@@ -55,3 +56,10 @@ function Ticket () {
     )
 }
 export default Ticket;
+
+
+// const ticketButtons = [
+    //     {className: 'btnTicket', symbol: ' ₽'},
+    //     {className: 'btnTicket', symbol: ' $'},
+    //     {className: 'btnTicket', symbol: ' €'},
+    // ]

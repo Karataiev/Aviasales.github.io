@@ -24,22 +24,20 @@ const defaultState = {
 function currencyReducer (state = defaultState, action) {
     switch(action.type) {
         case actionNames.CURRENCY_CHANGE:
-            const icon_1 = ' ₽';
-            const icon_2 = ' €';
-            const icon_3 = ' $';
             const { currencyName } = action;
             let tickets = [...getDefaultTickets()];
+            let symbol = state.exchangeSymbol;
         
             if (currencyName === "USD") {
-                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price * state.exchangeRates.USD)) + icon_3}))
+                tickets = tickets.map((ticket) => ({...ticket, price: Math.trunc(ticket.price * state.exchangeRates.USD)}))
             }
             if (currencyName === "EUR") {
-                tickets = tickets.map((ticket) => ({...ticket, price: String(Math.trunc(ticket.price * state.exchangeRates.EUR)) + icon_2}))
+                tickets = tickets.map((ticket) => ({...ticket, price: Math.trunc(ticket.price * state.exchangeRates.EUR)}))
             }
             if (currencyName === "RUB") {
-                tickets = tickets.map((ticket) => ({...ticket, price: String(ticket.price) + icon_1}))
+                tickets = tickets.map((ticket) => ({...ticket, price: ticket.price, symbol: state.exchangeSymbol}))
             }
-            return {...state, currency: currencyName, tickets }
+            return {...state, currency: currencyName, tickets}
         
         case actionNames.FILTERS: 
             const { filterName } = action;
@@ -53,7 +51,7 @@ function currencyReducer (state = defaultState, action) {
         case actionNames.EXCHANGE_RATES: 
             const { exchangeRates } = action;
             return {...state, exchangeRates}
-       
+
         case actionNames.CHECK_ALL:
             const { toggleCheckAllName } = action;
             let allChecked = state.filters;

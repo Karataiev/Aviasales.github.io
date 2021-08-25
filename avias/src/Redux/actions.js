@@ -31,3 +31,4 @@ export const getExchangeRates = (exchangeRates) => ({
     type: actionNames.EXCHANGE_RATES,
     exchangeRates
 });
+
