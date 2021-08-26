@@ -43,7 +43,8 @@ const emailHandled = (e) => {
 
 const phoneHandled = (p) => {
     setPhone(p.target.value)
-    if (p.target.value.length < 10 || p.target.value.length > 10 || /^[0-9]+$/.test(p)){
+    const reg = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){1,14}(\s*)?$/;
+    if (!reg.test(phone)){
         setPhoneError('Данные некоректны')
     } else {
         setPhoneError('')
@@ -52,7 +53,7 @@ const phoneHandled = (p) => {
 
 const firstnameHandled = (f) => {
     setFirstname(f.target.value)
-    const re = /^[А-ЯЁ][а-яё]/;
+    const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']{1,15}?$/u;
     if (!re.test(String(firstname))){
         setFirstnameError('Данные некоректны')
     } else {
@@ -62,7 +63,7 @@ const firstnameHandled = (f) => {
 
 const secondnameHandled = (s) => {
     setSecondname(s.target.value)
-    const re = /^[А-ЯЁ][а-яё]/;
+    const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']{2,15}?$/u;
     if (!re.test(String(secondname))){
         setSecondnameError('Данные некоректны') 
     } else {
