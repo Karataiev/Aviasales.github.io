@@ -219,23 +219,25 @@ hr {
 .checkLi:hover .text_2{
   color: rgb(0, 110, 255);
   transition: .5s;
-  
+  background-color: rgb(235, 235, 253);
 }
 
 .checkLiAll:hover .text_2{
   color: rgb(0, 110, 255);
   transition: .5s;
-  
 }
 
 .text_2 {
   position: relative;
-  bottom: -7px;
+  bottom: -6px;
   font-size: small;
   font-weight: bold;
   float: right;
   color: white;
   padding-right: 5px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
 .inputValid {
@@ -247,6 +249,17 @@ hr {
   border-radius: 5px;
   border: none;
   box-shadow: inset 0px 0px 5px gray;
+}
+
+.inputValidError {
+  margin: 0 auto;
+  display: block;
+  width: 300px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 0px 0px 5px rgb(238, 0, 0);
 }
 
 .order {

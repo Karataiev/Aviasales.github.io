@@ -12,7 +12,7 @@ const FilterItem = ({checked, onClick, id, label}) => {
                 <input className="one" type="checkbox" checked={checked} onChange={() =>{dispatch(checkedTickets(id))}} onClick={() => onClick(id)}/>
             </span>
             <span className="text">{label}</span>
-            <span className="text_2">ТОЛЬКО</span>
+            <button className="text_2">ТОЛЬКО</button>
         </div>
         </label>
        

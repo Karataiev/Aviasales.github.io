@@ -116,19 +116,19 @@ const blurHandler = (e) => {
                 >
                     <h1 className='order'>Order window</h1>
                     
-                    <input onChange={e => emailHandled(e)} value={email} onBlur={e => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className='inputValid'/>
+                    <input onChange={e => emailHandled(e)} value={email} onBlur={e => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className={`${emailDirty && emailError ? 'inputValidError' : 'inputValid'}`}/>
                     {(emailDirty && emailError) && <div className="divError" style={{color: 'red'}}>{emailError}</div>}
 
-                    <input onChange={p => phoneHandled(p)} value={phone} onBlur={e => blurHandler(e)} name='phone' type='text' placeholder='Enter your phone' className='inputValid'/>
+                    <input onChange={p => phoneHandled(p)} value={phone} onBlur={e => blurHandler(e)} name='phone' type='text' placeholder='Enter your phone' className={`${phoneDirty && phoneError ? 'inputValidError' : 'inputValid'}`}/>
                     {(phoneDirty && phoneError) && <div className="divError" style={{color: 'red'}}>{phoneError}</div>}
 
-                    <input onChange={f => firstnameHandled(f)} value={firstname} onBlur={e => blurHandler(e)} name='firstname' type='text' placeholder='Enter your firstname' className='inputValid'/>
+                    <input onChange={f => firstnameHandled(f)} value={firstname} onBlur={e => blurHandler(e)} name='firstname' type='text' placeholder='Enter your firstname' className={`${firstnameDirty && firstnameError ? 'inputValidError' : 'inputValid'}`}/>
                     {(firstnameDirty && firstnameError) && <div className="divError" style={{color: 'red'}}>{firstnameError}</div>}
 
-                    <input onChange={s => secondnameHandled(s)} value={secondname} onBlur={e => blurHandler(e)} name='secondname' type='text' placeholder='Enter your secondname' className='inputValid'/>
+                    <input onChange={s => secondnameHandled(s)} value={secondname} onBlur={e => blurHandler(e)} name='secondname' type='text' placeholder='Enter your secondname' className={`${secondnameDirty && secondnameError ? 'inputValidError' : 'inputValid'}`}/>
                     {(secondnameDirty && secondnameError) && <div className="divError" style={{color: 'red'}}>{secondnameError}</div>}
 
-                    <input onChange={pas => passportnumberHandled(pas)} value={passportnumber} onBlur={e => blurHandler(e)} name='passportnumber' type='text' placeholder='passportnumber' className='inputValid'/>
+                    <input onChange={pas => passportnumberHandled(pas)} value={passportnumber} onBlur={e => blurHandler(e)} name='passportnumber' type='text' placeholder='passportnumber' className={`${passportnumberDirty && passportnumberError ? 'inputValidError' : 'inputValid'}`}/>
                     {(passportnumberDirty && passportnumberError) && <div className="divError" style={{color: 'red'}}>{passportnumberError}</div>}
 
                     <button disabled={!formValid} type='submit' className='btnOrder' onClick={() => setActiveSuccess(true)}>Order</button>

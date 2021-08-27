@@ -13,7 +13,6 @@ const FilterAll = ({id, checked}) => {
                 <input className="one" type="checkbox" checked={checked} onChange={() => {dispatch(toggleCheckAll('All'))}}/>
             </span>
             <span className="text">Все</span>
-            <span className="text_2">ТОЛЬКО</span>
         </div>
         </label>
        </>
