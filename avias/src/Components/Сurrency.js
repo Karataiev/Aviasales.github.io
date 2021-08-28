@@ -15,7 +15,7 @@ function Сurrency({id,index} ) {
     const [error, setError] = useState(null);
 
     const currencies = useSelector(state => state.root.tickets)
-    console.log(currencies)
+    // console.log(currencies)
 
     useEffect(() => {
         fetch("https://www.cbr-xml-daily.ru/latest.js")
@@ -23,7 +23,7 @@ function Сurrency({id,index} ) {
         .then(
             (result) => {
                 dispatch(getExchangeRates(result.rates)); 
-                console.log(result.rates);
+                // console.log(result.rates);
             },
             (error) => {
                 setError(error);

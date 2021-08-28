@@ -56,10 +56,3 @@ function Ticket () {
     )
 }
 export default Ticket;
-
-
-// const ticketButtons = [
-    //     {className: 'btnTicket', symbol: ' ₽'},
-    //     {className: 'btnTicket', symbol: ' $'},
-    //     {className: 'btnTicket', symbol: ' €'},
-    // ]

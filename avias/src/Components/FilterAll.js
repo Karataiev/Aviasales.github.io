@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleCheckAll } from '../Redux/actions'
 
-const FilterAll = ({id, checked}) => {
+const FilterAll = ({checked}) => {
     const dispatch = useDispatch();
 
     return (

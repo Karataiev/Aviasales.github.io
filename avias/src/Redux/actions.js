@@ -32,3 +32,9 @@ export const getExchangeRates = (exchangeRates) => ({
     exchangeRates
 });
 
+export const getOnlyFilter = (onlyFilter) => ({
+    type: actionNames.ONLY_FILTER,
+    onlyFilter
+});
+
+
