@@ -7,14 +7,14 @@ const FilterAll = ({checked}) => {
 
     return (
        <>
-        <label>
-        <div className="checkLiAll">
-            <span>
-                <input className="one" type="checkbox" checked={checked} onChange={() => {dispatch(toggleCheckAll('All'))}}/>
-            </span>
-            <span className="text">Все</span>
-        </div>
-        </label>
+       <label>
+            <div className="checkLiAll">
+                <span>
+                    <input className="one" type="checkbox" checked={checked} onChange={() => {dispatch(toggleCheckAll('All'))}}/>
+                </span>
+                <span className="text">Все</span>
+            </div> 
+       </label>
        </>
     )
 }

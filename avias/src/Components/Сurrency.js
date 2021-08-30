@@ -1,21 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { currencyChangeAction, filterActions, getExchangeRates } from '../Redux/actions';
 import FilterItem from './FilterItem';
 import FilterAll from './FilterAll'
-import {useState, useEffect} from 'react'
 import CurrencyButton from './CurrencyButton';
 
-function Сurrency({id,index} ) {
+import { getOnlyFilter } from '../Redux/actions';
+
+
+function Сurrency({id}) {
 
     const filters = useSelector(state => state.root.filters);
     const currency = useSelector(state => state.root.currency);
     const dispatch = useDispatch();
 
     const [error, setError] = useState(null);
-
     const currencies = useSelector(state => state.root.tickets)
-    // console.log(currencies)
 
     useEffect(() => {
         fetch("https://www.cbr-xml-daily.ru/latest.js")
@@ -23,7 +23,6 @@ function Сurrency({id,index} ) {
         .then(
             (result) => {
                 dispatch(getExchangeRates(result.rates)); 
-                // console.log(result.rates);
             },
             (error) => {
                 setError(error);
@@ -53,7 +52,9 @@ function Сurrency({id,index} ) {
                 <span >КОЛИЧЕСТВО ПЕРЕСАДОК</span>
                 <FilterAll checked={filters.every(filter => filter.checked)}/>
                 {filters.map((filter) => (
-                    <FilterItem key={filter.id} {...filter} onClick={(id) => dispatch(filterActions(id))} />
+                    <FilterItem key={filter.id} {...filter} onClick={(id) => dispatch(filterActions(id))}>
+                        <button className="text_2" onClick={() =>{dispatch(getOnlyFilter(filter.id))}}>ТОЛЬКО</button>
+                    </FilterItem>
                 ))}
             </ul>
         </div>

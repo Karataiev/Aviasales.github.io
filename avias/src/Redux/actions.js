@@ -17,11 +17,6 @@ export const toggleCheckAll = (toggleCheckAllName) => ({
     toggleCheckAllName
 });
 
-export const checkedTickets = (ticketsName) => ({
-    type: actionNames.CHECKED_TICKETS,
-    ticketsName
-});
-
 export const someTickets = (someTicketsName) => ({
     type: actionNames.MY_TICKETS,
     someTicketsName
