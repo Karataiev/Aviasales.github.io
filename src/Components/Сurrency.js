@@ -21,7 +21,7 @@ function Сurrency({id}) {
         .then((res) => res.json())
         .then(
             (result) => {
-                dispatch(getExchangeRates(result.rates)); 
+                dispatch(getExchangeRates({...result.rates, RUB:1}));
             },
             (error) => {
                 setError(error);

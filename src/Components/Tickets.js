@@ -22,7 +22,7 @@ function Ticket () {
         <>
         <ul className="tickets">
         {tickets.map(item => (
-            <li key={item.price} className="someTicket"> 
+            <li key={Math.random()} className="someTicket"> 
                 <div className="price">
                     <img src={logo} alt="avia" width="100px" className="turAir"/>
                         <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купить</div>за {item.price} {currencySymbols[currency]}</button>

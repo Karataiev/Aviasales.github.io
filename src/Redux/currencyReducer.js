@@ -17,7 +17,8 @@ const defaultState = {
     ],
     exchangeRates: {
         USD: 0.013612,
-        EUR: 0.011612
+        EUR: 0.011612,
+        RUB: 1
     },
 }
 
@@ -26,11 +27,7 @@ function currencyReducer (state = defaultState, action) {
         case actionNames.CURRENCY_CHANGE:
             const { currencyName } = action;
             let tickets = [...getDefaultTickets()];
-
-            (currencyName === "USD") ? tickets = tickets.map((ticket) => ({...ticket, price: ~~(ticket.price * state.exchangeRates.USD)})) :
-            (currencyName === "EUR") ? tickets = tickets.map((ticket) => ({...ticket, price: ~~(ticket.price * state.exchangeRates.EUR)})) :
-            tickets = tickets.map((ticket) => ({...ticket, price: ticket.price}))
-
+            tickets = tickets.map((ticket) => ({...ticket, price: ~~(ticket.price * state.exchangeRates[currencyName])}))
             return {...state, currency: currencyName, tickets}
 
         case actionNames.EXCHANGE_RATES: 
