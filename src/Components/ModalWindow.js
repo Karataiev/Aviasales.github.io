@@ -3,7 +3,15 @@ import { useState } from 'react'
 
 function ModalWindow ({setActive, setActiveSuccess}) {
 
-const [email, setEmail] = useState('');
+const [state, setState] = useState({
+    email: '',
+    phone: '',
+    firstname: '',
+    secondname: '',
+    passportnumber: ''
+})
+
+// const [email, setEmail] = useState('');
 const [phone, setPhone] = useState('');
 const [firstname, setFirstname] = useState('');
 const [secondname, setSecondname] = useState('');
@@ -28,9 +36,9 @@ useEffect(() => {
 }, [emailError, phoneError, firstnameError, secondnameError, passportnumberError])
 
 const emailHandled = (e) => {
-    setEmail(e.target.value)
+    setState(e.target.value)
     const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(email)){
+    if (!re.test(state.email)){
         setEmailError('Данные некоректны')
     } else {
         setEmailError('')
@@ -113,7 +121,7 @@ const blurHandler = (e) => {
                 >
                     <h1 className='order'>Order window</h1>
                     
-                    <input onChange={e => emailHandled(e)} value={email} onBlur={e => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className={`${emailDirty && emailError ? 'inputValidError' : 'inputValid'}`}/>
+                    <input onChange={e => emailHandled(e)} value={state.email} onBlur={e => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className={`${emailDirty && emailError ? 'inputValidError' : 'inputValid'}`}/>
                     {(emailDirty && emailError) && <div className="divError" style={{color: 'red'}}>{emailError}</div>}
 
                     <input onChange={p => phoneHandled(p)} value={phone} onBlur={e => blurHandler(e)} name='phone' type='text' placeholder='Enter your phone' className={`${phoneDirty && phoneError ? 'inputValidError' : 'inputValid'}`}/>
