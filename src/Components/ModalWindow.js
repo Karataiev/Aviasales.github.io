@@ -11,103 +11,81 @@ const [state, setState] = useState({
     passportnumber: ''
 })
 
-// const [email, setEmail] = useState('');
-const [phone, setPhone] = useState('');
-const [firstname, setFirstname] = useState('');
-const [secondname, setSecondname] = useState('');
-const [passportnumber, setPassportnumber] = useState('');
+const [stateDirty, setStateDirty] = useState({
+    email: false,
+    phone: false,
+    firstname: false,
+    secondname: false,
+    passportnumber: false
+})
 
-const [emailDirty, setEmailDirty] = useState(false);
-const [phoneDirty, setPhoneDirty] = useState(false);
-const [firstnameDirty, setFirstnameDirty] = useState(false);
-const [secondnameDirty, setSecondnameDirty] = useState(false);
-const [passportnumberDirty, setPassportnumberDirty] = useState(false);
-
-const [emailError, setEmailError] = useState('Поле должно быть заполненым');
-const [phoneError, setPhoneError] = useState('Поле должно быть заполненым');
-const [firstnameError, setFirstnameError] = useState('Поле должно быть заполненым');
-const [secondnameError, setSecondnameError] = useState('Поле должно быть заполненым');
-const [passportnumberError, setPassportnumberError] = useState('Поле должно быть заполненым');
-
-const [formValid, setFormValid] = useState(false)
-
-useEffect(() => {
-    setFormValid(!emailError || !phoneError || !firstnameError || !secondnameError || !passportnumberError)
-}, [emailError, phoneError, firstnameError, secondnameError, passportnumberError])
+const [stateError, setStateError] = useState({
+    emailError: 'Поле должно быть заполненым',
+    phoneError: 'Поле должно быть заполненым',
+    firstnameError: 'Поле должно быть заполненым',
+    secondnameError: 'Поле должно быть заполненым',
+    passportnumberError: 'Поле должно быть заполненым'
+}) 
 
 const emailHandled = (e) => {
-    setState(e.target.value)
+    setState({...state, email: e.target.value})
     const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(state.email)){
-        setEmailError('Данные некоректны')
+    if (!re.test(e.target.value)){
+        setStateError({...stateError, emailError: 'Данные некоректны'})
     } else {
-        setEmailError('')
+        setStateError({...stateError, emailError: ''})
     }
 }
 
 const phoneHandled = (p) => {
-    setPhone(p.target.value)
-    const reg = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){1,14}(\s*)?$/;
-    if (!reg.test(phone)){
-        setPhoneError('Данные некоректны')
+    setState({...state, phone: p.target.value})
+    const reg = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+    if (!reg.test(p.target.value)){
+        setStateError({...stateError, phoneError: 'Данные некоректны'})
     } else {
-        setPhoneError('')
+        setStateError({...stateError, phoneError: ''})
     }
 }
 
 const firstnameHandled = (f) => {
-    setFirstname(f.target.value)
-    const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']{1,15}?$/u;
-    if (!re.test(String(firstname))){
-        setFirstnameError('Данные некоректны')
+    setState({...state, firstname: f.target.value})
+    const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']{3,15}?$/u;
+    if (!re.test(String(f.target.value))){
+        setStateError({...stateError, firstnameError: 'Данные некоректны'})
     } else {
-        setFirstnameError('')
+        setStateError({...stateError, firstnameError: ''})
     }
 }
 
 const secondnameHandled = (s) => {
-    setSecondname(s.target.value)
+    setState({...state, secondname: s.target.value})
     const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']{2,15}?$/u;
-    if (!re.test(String(secondname))){
-        setSecondnameError('Данные некоректны') 
+    if (!re.test(String(s.target.value))){
+        setStateError({...stateError, secondnameError: 'Данные некоректны'}) 
     } else {
-        setSecondnameError('')
+        setStateError({...stateError, secondnameError: ''})
     }
 }
 
 const passportnumberHandled = (pas) => {
-    setPassportnumber(pas.target.value)
-    if (pas.target.value.length < 6 || pas.target.value.length > 6 || /^[0-9]+$/.test(pas)){
-        setPassportnumberError('Данные некоректны')
-        if(!pas.target.value){
-            setPassportnumberError ('Поле должно быть заполненым')
-        }
+    setState({...state, passportnumber: pas.target.value})
+    const re = /^[0-9]{6,6}$/;
+    if (!re.test(pas.target.value)){
+        setStateError({...stateError, passportnumberError: 'Данные некоректны'})
     } else {
-        setPassportnumberError('')
+        setStateError({...stateError, passportnumberError: ''})
     }
 }
 
 const blurHandler = (e) => {
-
-    switch (e.target.name) {
-        case 'email':
-            setEmailDirty(true)
-            break
-        case 'phone':
-            setPhoneDirty(true)
-            break
-        case 'firstname':
-            setFirstnameDirty(true)
-            break
-        case 'secondname':
-            setSecondnameDirty(true)
-            break
-        case 'passportnumber':
-            setPassportnumberDirty(true)
-            break
-            default:
-    }
+    setStateDirty({...stateDirty, [e.target.name]: true})
 }
+
+const [formValid, setFormValid] = useState(false)
+
+useEffect(() => {
+    setFormValid(!stateError.emailError && !stateError.phoneError && !stateError.firstnameError && !stateError.secondnameError && !stateError.passportnumberError)
+}, [stateError.emailError, stateError.phoneError, stateError.firstnameError, stateError.secondnameError, stateError.passportnumberError])
 
     return (
         <>
@@ -121,20 +99,20 @@ const blurHandler = (e) => {
                 >
                     <h1 className='order'>Order window</h1>
                     
-                    <input onChange={e => emailHandled(e)} value={state.email} onBlur={e => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className={`${emailDirty && emailError ? 'inputValidError' : 'inputValid'}`}/>
-                    {(emailDirty && emailError) && <div className="divError" style={{color: 'red'}}>{emailError}</div>}
+                    <input onChange={e => emailHandled(e)} value={state.email} onBlur={(e) => blurHandler(e)} name='email' type='text' placeholder='Enter your email' className={`${stateDirty.email && stateError.emailError ? 'inputValidError' : 'inputValid'}`}/>
+                    {(stateDirty.email && stateError.emailError) && <div className="divError" style={{color: 'red'}}>{stateError.emailError}</div>}
 
-                    <input onChange={p => phoneHandled(p)} value={phone} onBlur={e => blurHandler(e)} name='phone' type='text' placeholder='Enter your phone' className={`${phoneDirty && phoneError ? 'inputValidError' : 'inputValid'}`}/>
-                    {(phoneDirty && phoneError) && <div className="divError" style={{color: 'red'}}>{phoneError}</div>}
+                    <input onChange={p => phoneHandled(p)} value={state.phone} onBlur={e => blurHandler(e)} name='phone' type='text' placeholder='Enter your phone' className={`${stateDirty.phone && stateError.phoneError ? 'inputValidError' : 'inputValid'}`}/>
+                    {(stateDirty.phone && stateError.phoneError) && <div className="divError" style={{color: 'red'}}>{stateError.phoneError}</div>}
 
-                    <input onChange={f => firstnameHandled(f)} value={firstname} onBlur={e => blurHandler(e)} name='firstname' type='text' placeholder='Enter your firstname' className={`${firstnameDirty && firstnameError ? 'inputValidError' : 'inputValid'}`}/>
-                    {(firstnameDirty && firstnameError) && <div className="divError" style={{color: 'red'}}>{firstnameError}</div>}
+                    <input onChange={f => firstnameHandled(f)} value={state.firstname} onBlur={e => blurHandler(e)} name='firstname' type='text' placeholder='Enter your firstname' className={`${stateDirty.firstname && stateError.firstnameError ? 'inputValidError' : 'inputValid'}`}/>
+                    {(stateDirty.firstname && stateError.firstnameError) && <div className="divError" style={{color: 'red'}}>{stateError.firstnameError}</div>}
 
-                    <input onChange={s => secondnameHandled(s)} value={secondname} onBlur={e => blurHandler(e)} name='secondname' type='text' placeholder='Enter your secondname' className={`${secondnameDirty && secondnameError ? 'inputValidError' : 'inputValid'}`}/>
-                    {(secondnameDirty && secondnameError) && <div className="divError" style={{color: 'red'}}>{secondnameError}</div>}
+                    <input onChange={s => secondnameHandled(s)} value={state.secondname} onBlur={e => blurHandler(e)} name='secondname' type='text' placeholder='Enter your secondname' className={`${stateDirty.secondname && stateError.secondnameError ? 'inputValidError' : 'inputValid'}`}/>
+                    {(stateDirty.secondname && stateError.secondnameError) && <div className="divError" style={{color: 'red'}}>{stateError.secondnameError}</div>}
 
-                    <input onChange={pas => passportnumberHandled(pas)} value={passportnumber} onBlur={e => blurHandler(e)} name='passportnumber' type='text' placeholder='passportnumber' className={`${passportnumberDirty && passportnumberError ? 'inputValidError' : 'inputValid'}`}/>
-                    {(passportnumberDirty && passportnumberError) && <div className="divError" style={{color: 'red'}}>{passportnumberError}</div>}
+                    <input onChange={pas => passportnumberHandled(pas)} value={state.passportnumber} onBlur={e => blurHandler(e)} name='passportnumber' type='text' placeholder='passportnumber' className={`${stateDirty.passportnumber && stateError.passportnumberError ? 'inputValidError' : 'inputValid'}`}/>
+                    {(stateDirty.passportnumber && stateError.passportnumberError) && <div className="divError" style={{color: 'red'}}>{stateError.passportnumberError}</div>}
 
                     <button disabled={!formValid} type='submit' className='btnOrder' onClick={() => setActiveSuccess(true)}>Order</button>
                     
