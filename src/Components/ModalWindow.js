@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import InputField from './InputField';
 import useValidator from './validator';
 
+const fieldEmpty  = 'Поле должно быть заполненым';
+
 const defaultInputs = {
-    email: {error: '', placeholder: 'Enter your email', name: 'email', value: ''},
-    phone: {error: '', placeholder: 'Enter your phone', name: 'phone', value: ''},
-    firstname: {error: '', placeholder: 'Enter your firstname', name: 'firstname', value: ''},
-    secondname: {error: '', placeholder: 'Enter your secondname', name: 'secondname', value: ''},
-    passportnumber: {error: '', placeholder: 'Enter your passportnumber', name: 'passportnumber', value: ''},
+    email: {error: fieldEmpty, placeholder: 'Enter your email', name: 'email', value: '', dirty: false},
+    phone: {error: fieldEmpty, placeholder: 'Enter your phone', name: 'phone', value: '', dirty: false},
+    firstname: {error: fieldEmpty, placeholder: 'Enter your firstname', name: 'firstname', value: '', dirty: false},
+    secondname: { error: fieldEmpty, placeholder: 'Enter your secondname', name: 'secondname', value: '', dirty: false},
+    passportnumber: {error: fieldEmpty, placeholder: 'Enter your passportnumber', name: 'passportnumber', value: '', dirty: false},
 }
 
 function ModalWindow ({setActive, setActiveSuccess}) {
-
-    const {formValid, validateHandler } = useValidator(false);
+    
+    const {validateHandler} = useValidator();
     const [formState, setFormState] = useState(defaultInputs);
+    const isBntDisabled = Object.keys(formState).every(fieldName => formState[fieldName].dirty && !formState[fieldName].error)
 
     const onChange = (event) => {
         const {value, name} = event.target;
@@ -40,9 +43,8 @@ function ModalWindow ({setActive, setActiveSuccess}) {
                 }}
                 >
                     <h1 className='order'>Order window</h1>
-                    {Object.keys(formState).map((fieldName) => <InputField {...formState[fieldName]} onChange={onChange} onBlur={onBlur}/>)}
-                    <button disabled={!formValid} type='submit' className='btnOrder' onClick={() => setActiveSuccess(true)}>Order</button>
-                    
+                    {Object.keys(formState).map((fieldName) => <InputField key={fieldName} {...formState[fieldName]} onChange={onChange} onBlur={onBlur}/>)}
+                    <button disabled={!isBntDisabled}  type='submit' className='btnOrder' onClick={() => setActiveSuccess(true)}>Order</button>
                 </form>
                 </div>
             </div>

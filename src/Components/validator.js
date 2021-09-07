@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 
  const useValidator = () => {
@@ -10,30 +10,15 @@ import {useState, useEffect} from 'react';
         secondname: '',
         passportnumber: ''
     })
-
-    const [stateDirty, setStateDirty] = useState({
-        email: false,
-        phone: false,
-        firstname: false,
-        secondname: false,
-        passportnumber: false
-    })
-
-    const [stateError, setStateError] = useState({
-        emailError: 'Поле должно быть заполненым',
-        phoneError: 'Поле должно быть заполненым',
-        firstnameError: 'Поле должно быть заполненым',
-        secondnameError: 'Поле должно быть заполненым',
-        passportnumberError: 'Поле должно быть заполненым'
-    }) 
-
+    
+    
     const validateHandler = (name, value) => {
         if (name === 'email') return emailHandled(value)
         if (name === 'phone') return phoneHandled(value)
         if (name === 'firstname') return fullNameHandled(value)
         if (name === 'secondname') return fullNameHandled(value)
         if (name === 'passportnumber') return passportnumberHandled(value)
-    }
+    } 
 
     const emailHandled = (email) => {
         setState({...state, email})
@@ -59,27 +44,7 @@ import {useState, useEffect} from 'react';
         return (!re.test(passportnumber))? 'Данные некоректны' : '';
     }
 
-    const blurHandler = (e) => {
-        setStateDirty({...stateDirty, [e.target.name]: true})
-    }
-
-    const [formValid, setFormValid] = useState(false)
-
-    useEffect(() => {
-        setFormValid(!stateError.emailError && !stateError.phoneError && !stateError.firstnameError && !stateError.secondnameError && !stateError.passportnumberError)
-    }, [stateError.emailError, stateError.phoneError, stateError.firstnameError, stateError.secondnameError, stateError.passportnumberError])
-
-    return {state,
-        validateHandler,
-            stateDirty, 
-            stateError, 
-            formValid, 
-            emailHandled, 
-            phoneHandled, 
-            passportnumberHandled, 
-            blurHandler,
-            setStateError
-        }
+    return {validateHandler}
 }
 
 export default useValidator;
