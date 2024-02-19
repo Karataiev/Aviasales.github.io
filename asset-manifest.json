@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Aviasales.github.io/static/css/main.7fe92dbc.css",
-    "main.js": "/Aviasales.github.io/static/js/main.b9449626.js",
+    "main.js": "/Aviasales.github.io/static/js/main.244cb758.js",
     "static/js/453.bb6f308f.chunk.js": "/Aviasales.github.io/static/js/453.bb6f308f.chunk.js",
     "static/media/image-avia.png": "/Aviasales.github.io/static/media/image-avia.87bb97880820bb6dce8a.png",
     "index.html": "/Aviasales.github.io/index.html",
     "main.7fe92dbc.css.map": "/Aviasales.github.io/static/css/main.7fe92dbc.css.map",
-    "main.b9449626.js.map": "/Aviasales.github.io/static/js/main.b9449626.js.map",
+    "main.244cb758.js.map": "/Aviasales.github.io/static/js/main.244cb758.js.map",
     "453.bb6f308f.chunk.js.map": "/Aviasales.github.io/static/js/453.bb6f308f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7fe92dbc.css",
-    "static/js/main.b9449626.js"
+    "static/js/main.244cb758.js"
   ]
 }
