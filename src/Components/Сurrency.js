@@ -15,7 +15,7 @@ function Currency() {
         .then((res) => res.json())
         .then(
             (result) => {
-                dispatch(getExchangeRates({...result.rates, RUB:1}));
+                dispatch(getExchangeRates({...result.rates, UAH:1}));
             }
         )
     }, []);
@@ -25,7 +25,7 @@ function Currency() {
     };
 
     const currencyButtons = [
-        {className: `btn_1`, onClick: onClickCurrencyBtn, label: 'RUB', name: 'RUB', id: 1},
+        {className: `btn_1`, onClick: onClickCurrencyBtn, label: 'UAH', name: 'UAH', id: 1},
         {className: `btn_2`, onClick: onClickCurrencyBtn, label: 'USD', name: 'USD', id: 2},
         {className: `btn_3`, onClick: onClickCurrencyBtn, label: 'EUR', name: 'EUR', id: 3}
     ]
@@ -39,11 +39,11 @@ function Currency() {
                 ))}
             </div>
             <ul className="transfer">
-                <span >КОЛИЧЕСТВО ПЕРЕСАДОК</span>
-                <FilterItem label='Все' checked={filters.every(filter => filter.checked)}/>
+                <span >КІЛЬКІСТЬ ПЕРЕСАДОК</span>
+                <FilterItem label='Усі' checked={filters.every(filter => filter.checked)}/>
                 {filters.map((filter) => (
                     <FilterItem key={filter.id} {...filter} onClick={(id) => dispatch(filterActions(id))}>
-                        <button className="text_2" onClick={() =>{dispatch(getOnlyFilter(filter.id))}}>ТОЛЬКО</button>
+                        <button className="text_2" onClick={() =>{dispatch(getOnlyFilter(filter.id))}}>ТІЛЬКИ</button>
                     </FilterItem>
                 ))}
             </ul>

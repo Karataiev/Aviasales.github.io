@@ -7,7 +7,7 @@ const getDefaultTickets = () => {
 }
 
 const defaultState = {
-    currency: "RUB",
+    currency: "UAH",
     tickets: [...getDefaultTickets()],
     filters: [
         { id: 0, label: 'Без пересадок', checked: true },
@@ -18,7 +18,7 @@ const defaultState = {
     exchangeRates: {
         USD: 0.013612,
         EUR: 0.011612,
-        RUB: 1
+        UAH: 1
     },
 }
 

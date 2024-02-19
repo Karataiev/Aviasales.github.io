@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputField from './InputField';
 import useValidator from './validator';
 
-const fieldEmpty  = 'Поле должно быть заполненым';
+const fieldEmpty  = 'Поле повинно бути заповненим';
 
 const defaultInputs = {
     email: {error: fieldEmpty, placeholder: 'Enter your email', name: 'email', value: '', dirty: false},

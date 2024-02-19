@@ -13,7 +13,7 @@ function Ticket () {
     const [modalActiveSuccess, setModalActiveSuccess] = useState(false)
 
     const currencySymbols = {
-        RUB: ' ₽',
+        UAH: ' ₴',
         USD: ' $',
         EUR: ' €'
     }
@@ -25,7 +25,7 @@ function Ticket () {
             <li key={Math.random()} className="someTicket"> 
                 <div className="price">
                     <img src={logo} alt="avia" width="100px" className="turAir"/>
-                        <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купить</div>за {item.price} {currencySymbols[currency]}</button>
+                        <button className="btnTicket" onClick={() => setModalActive(true)}><div>Купити</div>за {item.price} {currencySymbols[currency]}</button>
                 </div>
                 <div className="divInfo">
                     <div className="time">
